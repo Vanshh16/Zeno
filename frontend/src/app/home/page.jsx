@@ -20,7 +20,7 @@ export default function Home() {
   //     .catch(() => router.push('/login'));
   // }, []);
 
-  if (!user) return <div className="text-center mt-20">Loading...</div>;
+  if (!user) return <div className="min-h-screen flex justify-center items-center"><p>Loading...</p></div>;
 
   return (
     <main className="min-h-screen px-6 py-10 bg-gray-950 text-white">

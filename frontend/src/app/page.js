@@ -29,7 +29,7 @@ export default function LandingPage() {
     checkUser();
   }, []);
 
-  if (checking) return <div className="text-center mt-20">Loading...</div>;
+  if (checking) return <div className="min-h-screen flex justify-center items-center"><p>Loading...</p></div>;
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-gray-950 text-white px-4">
