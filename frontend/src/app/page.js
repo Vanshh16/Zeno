@@ -8,23 +8,25 @@ export default function LandingPage() {
   const router = useRouter();
   const [checking, setChecking] = useState(true);
 
-  useEffect(async () => {
-    try {
-      const response = await axios.get("http://localhost:9000/u/me", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
-      if (response.data.success === false) {
-        throw new Error();
-      } 
-      else {
-        router.push("/home");
+  useEffect(() => {
+    async function checkUser() {
+      try {
+        const response = await axios.get("http://localhost:9000/u/me", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        if (response.data.success === false) {
+          throw new Error();
+        } else {
+          router.push("/home");
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
+      setChecking(false);
     }
-    setChecking(false);
+    checkUser();
   }, []);
 
   if (checking) return <div className="text-center mt-20">Loading...</div>;
